@@ -15,7 +15,7 @@
         <v-list>
             <v-list-item>
                 <v-list-item-title class="text-wrap">
-                    <CustomDialog />
+                    <CustomDialog :demo="KingAndPawnDialog.demo"/>
                 </v-list-item-title>
             </v-list-item>
         </v-list>
@@ -24,11 +24,17 @@
 
 <script>
 import CustomDialog from '@/components/subcomponents/CustomDialog';
+import KingAndPawnDialog from '@/static/KingAndPawnDialog';
 
 export default {
     name: 'KingAndPawn',
     components: {
         CustomDialog,
+    },
+    data() {
+        return {
+            KingAndPawnDialog,
+        };
     },
 }
 </script>

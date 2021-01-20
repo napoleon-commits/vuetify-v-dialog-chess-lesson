@@ -1,4 +1,4 @@
-import EmptyChessBoardString from '@/static/EmptyChessBoardString';
+import EmptyChessBoardString from '@/static/EmptyBoardString';
 import ReplaceString from '@/utils/ReplaceString';
 
 export default (object) => {
