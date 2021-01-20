@@ -2,7 +2,7 @@
     <v-row>
         <v-col>
             <div>{{demo[page-1].text}}</div>
-            <div>
+            <div style="position: absolute; bottom: 0px; margin-left: -12px;">
                 <v-pagination
                     v-model="page"
                     :length="demo.length"
