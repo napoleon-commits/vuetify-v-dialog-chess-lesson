@@ -6,6 +6,7 @@
                 <v-pagination
                     v-model="page"
                     :length="demo.length"
+                    :total-visible="totalVisible"
                 ></v-pagination>
             </div>
         </v-col>
@@ -26,6 +27,7 @@ export default {
     data() {
         return {
             page: 1,
+            totalVisible: (window.innerWidth < 400) ? 0 : undefined,
         };
     },
     methods: {
@@ -48,6 +50,7 @@ export default {
                         'the-magic-position-left-column-text'
                 ).style.height = 'auto'
             }
+            this.totalVisible = (window.innerWidth < 338) ? 0 : undefined;
         }
     },
     mounted() {
