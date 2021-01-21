@@ -44,8 +44,9 @@ export default {
                     rightColumn.height()-leftColumnPagination.height()+3
                 );
             } else {
-                const leftColumnText = $('#the-magic-position-left-column-text');
-                leftColumnText.css('height', 'auto');
+                document.getElementById(
+                        'the-magic-position-left-column-text'
+                ).style.height = 'auto'
             }
         }
     },
