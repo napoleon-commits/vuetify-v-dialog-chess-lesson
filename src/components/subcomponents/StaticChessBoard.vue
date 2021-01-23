@@ -1,62 +1,35 @@
 <template>
-    <div
-        :style="`
-            padding-top: ${((containerHeight)-(containerHeight*GoldenRatio))/2}px;
-            padding-left: ${((containerWidth)-(containerWidth*GoldenRatio))/2}px;
-            color: white;
-        `"
-    >
-        <div
-            :style="`
-                border: 2px solid ${darkSquareColor};
-                width: ${containerWidth*GoldenRatio+4}px;
-                height: ${containerHeight*GoldenRatio+4}px;
-            `"
-        >
-            <v-row no-gutters v-for="(rank, i) in 9" :key="rank">
-                <v-col
-                    :style="`
-                        height: ${containerHeight*GoldenRatio/9}px;
-                        background-color: ${
-                            (coordinates[orientation][String(i)+String(j)])?'':((i+j-1)%2===0)?'white':darkSquareColor
-                        }
-                    `"
-                    class="text-center" 
-                    v-for="(file, j) in 9"
-                    :key="file"
+    <div :style="`border: 2px solid ${darkSquareColor};`">
+        <v-row class="ma-0" no-gutters v-for="(rank, i) in 9" :key="rank">
+            <v-col v-for="(file, j) in 9" :key="file">
+                <div
+                    v-if="coordinates[orientation][String(i)+String(j)]"
+                    class="text-center"
                 >
-                    <div
-                        v-if="coordinates[orientation][String(i)+String(j)]"
-                        :style="`padding-top: ${((containerHeight*GoldenRatio/9)-(fontSize))/2}px`"
-                    >
-                        {{coordinates[orientation][String(i)+String(j)]}}
-                    </div>
-                    <div style="cursor: pointer;" v-else>
-                        <ChessPieceImage
-                            :letter="pieceString[(i*8)+(j-1)]"
-                            :tileHeight="containerHeight*GoldenRatio/9"
-                        />
-                    </div>
-                </v-col>
-            </v-row>
-        </div>
+                    <!-- :style="`padding-top: ${((containerHeight*GoldenRatio/9)-(fontSize))/2}px`" -->
+                    {{coordinates[orientation][String(i)+String(j)]}}
+                </div>
+                <div class="text-center" :style="`background-color: ${((i+j-1)%2===0)?'white':darkSquareColor}`" v-else>
+                    <ChessPieceImage
+                        :letter="pieceString[(i*8)+(j-1)]"
+                    />
+                </div>
+            </v-col>
+        </v-row>
     </div>
 </template>
 
 <script>
-import GoldenRatio from '@/static/GoldenRatio';
 import ChessPieceImage from '@/components/subcomponents/ChessPieceImage';
 
 export default {
     name: 'StaticChessBoard',
-    props: ['containerWidth', 'containerHeight', 'orientation', 'darkSquareColor', 'pieceString'],
+    props: ['orientation', 'darkSquareColor', 'pieceString'],
     components: {
         ChessPieceImage,
     },
     data() {
         return {
-            GoldenRatio,
-            fontSize: 16,
             coordinates: {
                 white: {
                     '00': '8',

@@ -12,6 +12,7 @@
         <div v-else-if="letter==='Q'">&#9813;</div>
         <div v-else-if="letter==='K'">&#9812;</div>
         <div v-else-if="letter==='P'">&#9817;</div>
+        <div v-else>.</div>
     </div>
 </template>
 

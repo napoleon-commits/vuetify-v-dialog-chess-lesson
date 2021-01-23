@@ -1,38 +1,28 @@
 <template>
   <v-row no-gutters style="height: 100%;">
       <v-col>Foo</v-col>
-      <v-col id="chess-board-column">
-          width: {{chessBoardColumnWidth}} <br />
-          height: {{chessBoardColumnHeight}} <br />
+      <v-col>
+          <StaticChessBoard
+            :orientation="'white'"
+            :darkSquareColor="'red'"
+            :pieceString="StartingPositionString"
+          />
       </v-col>
   </v-row>
 </template>
 
 <script>
-import $ from 'jquery';
-
+import StaticChessBoard from '@/components/subcomponents/StaticChessBoard';
+import StartingPositionString from '@/static/StartingPositionString'
 export default {
     name: 'CustomDialogModal',
+    components: {
+        StaticChessBoard,
+    },
     data() {
         return {
-            chessBoardColumnWidth: null,
-            chessBoardColumnHeight: null,
+            StartingPositionString,
         };
-    },
-    methods: {
-        updateChessBoardDimensions() {
-            this.chessBoardColumnWidth = $('#chess-board-column').width();
-            this.chessBoardColumnHeight = $('#chess-board-column').height();
-        },
-    },
-    mounted() {
-        this.$nextTick(()=>{
-            this.updateChessBoardDimensions();
-        });
-        window.addEventListener('resize', this.updateChessBoardDimensions);
-    },
-    beforeDestroy() {
-        window.removeEventListener('resize', this.updateChessBoardDimensions);
     },
 }
 </script>
