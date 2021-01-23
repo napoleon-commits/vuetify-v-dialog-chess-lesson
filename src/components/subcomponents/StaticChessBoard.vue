@@ -1,17 +1,17 @@
 <template>
     <div :style="`border: 2px solid ${darkSquareColor};`">
-        <v-row class="ma-0" no-gutters v-for="(rank, i) in 9" :key="rank">
+        <v-row :style="`height: ${containerHeight/9}px`" class="ma-0" no-gutters v-for="(rank, i) in 9" :key="rank">
             <v-col v-for="(file, j) in 9" :key="file">
                 <div
                     v-if="coordinates[orientation][String(i)+String(j)]"
                     class="text-center"
                 >
-                    <!-- :style="`padding-top: ${((containerHeight*GoldenRatio/9)-(fontSize))/2}px`" -->
                     {{coordinates[orientation][String(i)+String(j)]}}
                 </div>
-                <div class="text-center" :style="`background-color: ${((i+j-1)%2===0)?'white':darkSquareColor}`" v-else>
+                <div class="text-center" :style="`height: 100%; background-color: ${((i+j-1)%2===0)?'white':darkSquareColor}`" v-else>
                     <ChessPieceImage
                         :letter="pieceString[(i*8)+(j-1)]"
+                        :tileHeight="containerHeight/9"
                     />
                 </div>
             </v-col>
@@ -24,7 +24,7 @@ import ChessPieceImage from '@/components/subcomponents/ChessPieceImage';
 
 export default {
     name: 'StaticChessBoard',
-    props: ['orientation', 'darkSquareColor', 'pieceString'],
+    props: ['orientation', 'darkSquareColor', 'pieceString', 'containerHeight'],
     components: {
         ChessPieceImage,
     },
