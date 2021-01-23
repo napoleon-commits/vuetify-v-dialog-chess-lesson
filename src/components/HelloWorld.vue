@@ -106,19 +106,20 @@
     },
     methods: {
       adjustFontClass(){
-        if(window.innerHeight < 302){
+        const dimensions = window.innerHeight > window.innerWidth ? window.innerWidth : window.innerHeight;
+        if(dimensions < 302){
           this.fontClass = 'text-subtitle-2'
         }
-        else if(window.innerHeight < 343){
+        else if(dimensions < 343){
           this.fontClass = 'text-subtitle-1'
         }
-        else if(window.innerHeight < 357){
+        else if(dimensions < 357){
           this.fontClass = 'text-h6'
         }
-        else if(window.innerHeight < 439){
+        else if(dimensions < 439){
           this.fontClass = 'text-h5'
         }
-        else if(window.innerHeight < 537){
+        else if(dimensions < 537){
           this.fontClass = 'text-h4'
         }
       }
