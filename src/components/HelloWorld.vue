@@ -15,7 +15,7 @@
       </template>
       <div
         :style="`
-        padding: 16px;
+        padding: 16px 0;
         height: 100%;
         background-color: ${$vuetify.theme.dark?'rgba(0,0,0,0.87)':'white'}
         `"
