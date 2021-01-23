@@ -41,7 +41,9 @@
                 <div v-else-if="StartingPositionString[i*8+(j-1)]==='Q'">&#9813;</div>
                 <div v-else-if="StartingPositionString[i*8+(j-1)]==='K'">&#9812;</div>
                 <div v-else-if="StartingPositionString[i*8+(j-1)]==='P'">&#9817;</div>
-                <div v-else>.</div>
+                <div v-else>
+                  <span :style="`color: ${((i+j-1)%2===0)?'white':'red'};`">.</span>
+                </div>
               </div>
             </v-col>
           </v-row>
