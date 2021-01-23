@@ -20,15 +20,15 @@
         background-color: ${$vuetify.theme.dark?'rgba(0,0,0,0.87)':'white'}
         `"
       >
-        <div style="border: 2px solid red;">
-          <v-row v-for="(rank, i) in 9" :key="rank">
+        <div class="ma-auto text-h3" style="border: 2px solid red; width: 55.62305898749055vw;">
+          <v-row class="ma-0" no-gutters v-for="(rank, i) in 9" :key="rank">
             <v-col v-for="(file, j) in 9" :key="file">
               <div v-if="coordinates[orientation][String(i)+String(j)]" class="text-center">
                 <span>
                   {{coordinates[orientation][String(i)+String(j)]}}
                 </span>
               </div>
-              <div v-else class="text-center">
+              <div v-else class="text-center" :style="`background-color: ${((i+j-1)%2===0)?'white':'red'};`">
                 <div v-if="StartingPositionString[i*8+(j-1)]==='r'">&#9820;</div>
                 <div v-else-if="StartingPositionString[i*8+(j-1)]==='n'">&#9822;</div>
                 <div v-else-if="StartingPositionString[i*8+(j-1)]==='b'">&#9821;</div>
