@@ -20,7 +20,7 @@
         background-color: ${$vuetify.theme.dark?'rgba(0,0,0,0.87)':'white'}
         `"
       >
-        <div class="ma-auto text-h3" style="border: 2px solid red; width: 55.62305898749055vw;">
+        <div class="ma-auto text-h3" style="border: 2px solid red; width: 76.86917696247162vw;">
           <v-row class="ma-0" no-gutters v-for="(rank, i) in 9" :key="rank">
             <v-col v-for="(file, j) in 9" :key="file">
               <div v-if="coordinates[orientation][String(i)+String(j)]" class="text-center">
