@@ -12,13 +12,15 @@
                 </span>
             </v-btn>
         </template>
-        <v-list>
-            <v-list-item>
-                <v-list-item-title class="text-wrap">
-                    <CustomDialogModal />
-                </v-list-item-title>
-            </v-list-item>
-        </v-list>
+        <div
+            :style="`
+                padding: 16px;
+                height: 100%;
+                background-color: ${$vuetify.theme.dark?'rgba(0,0,0,0.87)':'white'}
+            `"
+        >
+            <CustomDialogModal />
+        </div>
     </v-dialog>
 </template>
 
@@ -37,8 +39,5 @@ export default {
 <style>
     .v-dialog:not(.v-dialog--fullscreen){
         height: 61.80339887498949%;
-    }
-    .v-sheet.v-list{
-        height: 100%;
     }
 </style>
