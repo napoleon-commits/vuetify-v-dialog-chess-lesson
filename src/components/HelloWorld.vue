@@ -1,24 +1,17 @@
 <template>
   <div>
-    <div id="default-chess-board">
-      <static-chess-board />
-    </div>
-    <hr />
-    <div id="southside-chess-board">
-      <static-chess-board />
-    </div>
-    <hr />
-    <div id="dallas-county-chess-board">
-      <static-chess-board />
-    </div>
-    <hr />
-    <div id="selma-chess-board">
-      <static-chess-board />
-    </div>
-    <hr />
-    <div id="keith-chess-board">
-      <static-chess-board />
-    </div>
+    <v-row no-gutters>
+      <v-col>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas felis sit amet mauris posuere, quis facilisis purus porttitor. Morbi vitae volutpat ante. Nunc vel nibh ac sapien lacinia rutrum blandit eu mi. Duis nec condimentum nisi. Donec vel risus elit. Vestibulum in dolor ipsum. Etiam consequat est eget justo lobortis scelerisque. Cras eu tempor libero. Sed sed magna eget velit rhoncus rutrum. Pellentesque leo mauris, hendrerit accumsan sodales ac, ullamcorper eu enim. Aliquam felis arcu, aliquam vitae cursus vel, mollis at dolor. Fusce fermentum, ante non dignissim porta, turpis lorem tempor arcu, at porta velit purus non diam. Integer condimentum quam ultrices enim cursus, ac suscipit nisl viverra. Fusce lobortis laoreet nulla a venenatis. Aenean a nunc sollicitudin, fringilla dolor id, aliquet sem.
+
+        Proin in scelerisque erat. Fusce ullamcorper, ex et faucibus facilisis, massa neque varius eros, nec sagittis odio ligula a augue. Nunc at sagittis metus, sed accumsan arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sed tempus lacus. Donec et nisi eu risus aliquam ultrices. Nam non felis id augue pharetra commodo. Vivamus accumsan tortor sit amet vestibulum mollis. Pellentesque ut vestibulum nisl. Nullam auctor laoreet convallis. Aenean vitae massa eros.
+      </v-col>
+      <v-col>
+        <div id="selma-chess-board">
+          <static-chess-board />
+        </div>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
