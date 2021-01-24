@@ -2,13 +2,18 @@
   <div>
     <v-row no-gutters>
       <v-col>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas felis sit amet mauris posuere, quis facilisis purus porttitor. Morbi vitae volutpat ante. Nunc vel nibh ac sapien lacinia rutrum blandit eu mi. Duis nec condimentum nisi. Donec vel risus elit. Vestibulum in dolor ipsum. Etiam consequat est eget justo lobortis scelerisque. Cras eu tempor libero. Sed sed magna eget velit rhoncus rutrum. Pellentesque leo mauris, hendrerit accumsan sodales ac, ullamcorper eu enim. Aliquam felis arcu, aliquam vitae cursus vel, mollis at dolor. Fusce fermentum, ante non dignissim porta, turpis lorem tempor arcu, at porta velit purus non diam. Integer condimentum quam ultrices enim cursus, ac suscipit nisl viverra. Fusce lobortis laoreet nulla a venenatis. Aenean a nunc sollicitudin, fringilla dolor id, aliquet sem.
-
-        Proin in scelerisque erat. Fusce ullamcorper, ex et faucibus facilisis, massa neque varius eros, nec sagittis odio ligula a augue. Nunc at sagittis metus, sed accumsan arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sed tempus lacus. Donec et nisi eu risus aliquam ultrices. Nam non felis id augue pharetra commodo. Vivamus accumsan tortor sit amet vestibulum mollis. Pellentesque ut vestibulum nisl. Nullam auctor laoreet convallis. Aenean vitae massa eros.
+        <v-pagination
+          v-model="page"
+          :length="KingAndPawnLesson.demo.length"
+          @input="pageChange"
+        ></v-pagination>
+        {{KingAndPawnLesson.demo[page-1].text}}
       </v-col>
       <v-col>
         <div id="selma-chess-board">
-          <static-chess-board />
+          <StaticChessBoard 
+            :fen="KingAndPawnLesson.demo[page-1].fens[fenIndex]"
+          />
         </div>
       </v-col>
     </v-row>
@@ -17,9 +22,39 @@
 
 <script>
 import StaticChessBoard from './subcomponents/StaticChessBoard.vue'
+import KingAndPawnLesson from '@/static/KingAndPawnLesson';
+
 export default {
-  components: { StaticChessBoard },
   name: 'HelloWorld',
+  components: {
+    StaticChessBoard,
+  },
+  data() {
+    return {
+      KingAndPawnLesson,
+      page: 1,
+      fenIndex: 0,
+    };
+  },
+  methods: {
+    incrementFenIndex(){
+      if(this.fenIndex + 1 === KingAndPawnLesson.demo[this.page-1].fens.length){
+        this.fenIndex = 0;
+      }
+      else {
+        this.fenIndex += 1;
+      }
+    },
+    pageChange(){
+      this.fenIndex = 0;
+    }
+  },
+  mounted() {
+    setInterval(this.incrementFenIndex, 1000);
+  },
+  beforeDestroy() {
+    clearInterval(this.incrementFenIndex);
+  },
 }
 </script>
 
